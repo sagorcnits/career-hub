@@ -9,7 +9,7 @@ const Main = () => {
 const data = useLoaderData()
 
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-2 md:px-0">
             <Banner></Banner>
             <Jobs></Jobs>
             <Feature_job data={data}></Feature_job>

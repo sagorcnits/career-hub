@@ -16,4 +16,4 @@ function saveLocalStorage(id) {
   }
 }
 
-export { saveLocalStorage };
+export { getLocalStorage, saveLocalStorage };

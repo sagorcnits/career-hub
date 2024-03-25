@@ -3,31 +3,35 @@ import { FaCalendarDays } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { saveLocalStorage } from "../../js/localStorage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getLocalStorage, saveLocalStorage } from "../../js/localStorage";
 const JobDetails = () => {
   const id = useParams();
   const convertID = parseInt(id.id);
   const data = useLoaderData();
   const detailsJob = data.find((job) => job.id === convertID);
 
-
-
-const handleApply = () => {
-    saveLocalStorage(convertID)
-    toast("Your Apply Sucsess Wow 🤷‍♂️")
-}
-
+  const handleApply = () => {
+    const localStoreData = getLocalStorage();
+    const exitstdata = localStoreData.find((data) => data === convertID);
+    // console.log(exitstdata);
+    if (!exitstdata) {
+      saveLocalStorage(convertID);
+      toast("Your Apply Sucsess Wow 🤷‍♂️");
+    }else {
+      toast.warn("Sorry already applied 😍")
+    }
+  };
 
   return (
-    <div className="max-w-6xl mx-auto manrope-font">
-        <ToastContainer></ToastContainer>
+    <div className="max-w-6xl mx-auto px-2">
+      <ToastContainer></ToastContainer>
       <h1 className="text-[40px] font-bold manrope-font text-center">
         Job Details
       </h1>
-      <div className="grid lg:grid-cols-3 gap-5 my-20">
-        <div className="col-span-2 leading-10">
+      <div className="grid md:grid-cols-3 gap-5 my-20">
+        <div className="md:col-span-2 leading-10">
           <p>
             <span className="font-bold">Job Description:</span>{" "}
             {detailsJob.job_description}
@@ -88,7 +92,10 @@ const handleApply = () => {
             </div>
           </div>
 
-          <button onClick={handleApply} className="btn mt-4 w-full text-[18px] text-white font-bold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+          <button
+            onClick={handleApply}
+            className="btn mt-4 w-full text-[18px] text-white font-bold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]"
+          >
             Apply Now
           </button>
         </div>

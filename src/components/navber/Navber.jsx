@@ -25,16 +25,21 @@ const Navber = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 *:text-[16px]"
           >
-    
-            <li>
-              <a>Statistics</a>
-            </li>
-            <li>
-              <a>Applied Jobs</a>
-            </li>
-            <li>
-              <a>Blog</a>
-            </li>
+            
+              <li>
+              <NavLink to="/">Statistics</NavLink>
+              </li>
+         
+           
+              <li>
+              <NavLink to="/applied">Applied Jobs</NavLink>
+              </li>
+          
+            
+              <li>
+              <NavLink to="/blog">Blog</NavLink>
+              </li>
+          
           </ul>
         </div>
         <a className=" text-2xl font-bold ">CareerHub</a>
@@ -42,20 +47,20 @@ const Navber = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-        <NavLink to='/'>Statistics</NavLink>
+            <NavLink to="/">Statistics</NavLink>
           </li>
           <li>
-          <NavLink to='/applied'>Applied Jobs</NavLink>
-          
+            <NavLink to="/applied">Applied Jobs</NavLink>
           </li>
           <li>
-          <NavLink to='/blog'>Blog</NavLink>
-            
+            <NavLink to="/blog">Blog</NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn text-[18px] text-white font-bold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">Star Applying</a>
+        <a className="btn text-[18px] text-white font-bold bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+          Star Applying
+        </a>
       </div>
     </div>
   );
